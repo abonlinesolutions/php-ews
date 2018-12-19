@@ -194,7 +194,11 @@ class NTLMSoapClient extends SoapClient
                 'Connection' => 'Keep-Alive',
                 'User-Agent' => 'PHP-SOAP-CURL',
                 'Content-Type' => 'text/xml; charset=utf-8',
-                'SOAPAction' => $action
+                'SOAPAction' => $action,
+                'Expect' => '100-continue',
+            ),
+            'curl' => array(
+                CURLOPT_TIMEOUT => '30'
             ),
             'verify' => $this->validate,
             'http_errors' => false
