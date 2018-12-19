@@ -386,13 +386,13 @@ XML;
 
         return constant(ExchangeWebServices::class . "::$constant");
     }
-
+    
     protected function parseVersionAfter2013($majorVersion, $minorVersion, $buildVersion)
     {
         if ($minorVersion >= 1) {
             return ExchangeWebServices::VERSION_2016;
         }
-
-        return $buildVersion == 847 ? ExchangeWebServices::VERSION_2013_SP1 : ExchangeWebServices::VERSION_2013;
+        
+        return $buildVersion >= 847 ? ExchangeWebServices::VERSION_2013_SP1 : ExchangeWebServices::VERSION_2013;
     }
 }
