@@ -441,9 +441,11 @@ class ExchangeWebServices
         if ($code == 503) {
             throw new ServiceUnavailableException();
         }
-
+    
         if ($code >= 300) {
-            throw new ExchangeException('SOAP client returned status of ' . $code, $code);
+            if($code instanceof Message\ResponseMessageType) {
+                throw new ExchangeException('SOAP client returned status of ' . $code, $code);
+            }
         }
 
         if (empty($response) || empty($response->getNonNullResponseMessages())) {
