@@ -1,5 +1,5 @@
 {
-	"name": "garethp/php-ews",
+	"name": "abonline/php-ews",
 	"require": {
 		"garethp/http-playback": "^1.0",
 		"ext-curl": "*",
