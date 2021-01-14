@@ -89,7 +89,7 @@ class MailAPI extends API
             'ParentFolderIds' => $folderId->toArray(true)
         );
 
-        if (!empty($options['Restriction'])) {
+        if (!empty($options['Restriction']) && !$options['IgnoreRestrictionAutoFormat']) {
             $options['Restriction'] = $this->formatRestrictions($options['Restriction']);
         }
 
