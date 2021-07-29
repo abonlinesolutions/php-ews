@@ -32,7 +32,11 @@ class CalendarAPI extends API
         if ($displayName == 'default.calendar' || $displayName == null) {
             $this->folderId = $this->getDistinguishedFolderId('calendar');
         } else {
-            $this->folderId = $this->getFolderByDisplayName($displayName, 'calendar')->getFolderId();
+            $folderId = $this->getFolderByDisplayName($displayName, 'calendar');
+            if(!$folderId) {
+                throw new API\Exception("Folder '{$displayName}' not exists or can't be retrieved");
+            }
+            $this->folderId = $folderId;
         }
 
         return $this;
