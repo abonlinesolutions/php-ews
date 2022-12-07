@@ -211,7 +211,12 @@ class NTLMSoapClient extends SoapClient
         $this->__last_request_headers = $postOptions['headers'];
         $this->_responseCode = $response->getStatusCode();
 
-        return $response->getBody()->__toString();
+        return $this->removeInvalidXmlChars($response->getBody()->__toString());
+    }
+
+    protected function removeInvalidXmlChars($content)
+    {
+        return str_replace('&#xC', '', $content);
     }
 
     /**
