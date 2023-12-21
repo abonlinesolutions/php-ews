@@ -216,7 +216,7 @@ class NTLMSoapClient extends SoapClient
 
     protected function removeInvalidXmlChars($content)
     {
-        return str_replace('&#xC', '', $content);
+        return str_replace(['&#xC', '&#xB'], '', $content);
     }
 
     /**
